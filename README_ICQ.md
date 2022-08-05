@@ -25,12 +25,12 @@ echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile &
 source $HOME/.bash_profile && \
 go version
 ```
-## Make relayer home dir
+## Make icq home dir
 ```
 cd $HOME
 mkdir -p $HOME/.icq/config
 ```
-## Download go-v2 relayer
+## Download icq relayer
 ```
 git clone https://github.com/Stride-Labs/interchain-queries.git
 cd interchain-queries && git checkout v2.0.0
@@ -42,7 +42,7 @@ make install
 RUN cp -r interchain-queries/* .
 RUN rm -rf interchain-queries
 ```
-## Make you own config for Relayer v2
+## Make you own config for icq
 ```
 cd $HOME
 mkdir -p $HOME/.icq/config
@@ -66,9 +66,9 @@ default_chain: stride
 chains:
   stride:
     key: icq1
-    chain-id: STRIDE_CHAIN_ID
-    rpc-addr: http://STRIDE_ENDPOINT:26657
-    grpc-addr: http://STRIDE_ENDPOINT:9090
+    chain-id: STRIDE-TESTNET-2
+    rpc-addr: http://$IP2:$PORT2
+    grpc-addr: http://$IP2:9090
     account-prefix: stride
     keyring-backend: test
     gas-adjustment: 1.2
@@ -82,8 +82,8 @@ chains:
   gaia:
     key: icq2
     chain-id: GAIA
-    rpc-addr: http://GAIA_ENDPOINT:26657
-    grpc-addr: http://GAIA_ENDPOINT:9090
+    rpc-addr: http://$IP1:$PORT1
+    grpc-addr: http://$IP1:9090
     account-prefix: cosmos
     keyring-backend: test
     gas-adjustment: 1.2
